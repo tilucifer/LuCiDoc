@@ -1,0 +1,91 @@
+name: lucidoc
+
+services:
+  aggregator:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    init: true
+    environment:
+      PORT: "8080"
+      CONTENT_ROOT: /content
+      DATA_ROOT: /data
+      TEMPLATE_ROOT: /templates
+      KROKI_URL: http://kroki:8000
+      PDF_URL: http://pdf:3000
+    volumes:
+      - type: bind
+        source: ${CONTENT_DIR:-./content}
+        target: /content
+        read_only: true
+        bind:
+          create_host_path: false
+      - sites:/data
+      - templates:/templates
+    ports:
+      - "8080:8080"
+      # - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-8080}:8080"
+    depends_on:
+      pdf:
+        condition: service_healthy
+      kroki:
+        condition: service_started
+      mermaid:
+        condition: service_started
+    networks:
+      - local-only
+
+  pdf:
+    build:
+      context: ./pdf
+      dockerfile: Dockerfile
+    restart: unless-stopped
+    init: true
+    environment:
+      PORT: "3000"
+      APP_URL: http://aggregator:8080
+      EXPORT_ROOT: /exports
+      PDF_TIMEOUT_MS: "90000"
+    volumes:
+      - exports:/exports
+    expose:
+      - "3000"
+    healthcheck:
+      test: ["CMD", "node", "-e", "fetch('http://127.0.0.1:3000/health').then(r => process.exit(r.ok ? 0 : 1)).catch(() => process.exit(1))"]
+      interval: 10s
+      timeout: 3s
+      retries: 10
+      start_period: 20s
+    networks:
+      - local-only
+
+  kroki:
+    image: ${KROKI_IMAGE:-yuzutech/kroki:0.32.1}
+    restart: unless-stopped
+    environment:
+      KROKI_MERMAID_HOST: mermaid
+      KROKI_MERMAID_PORT: "8002"
+    expose:
+      - "8000"
+    depends_on:
+      - mermaid
+    networks:
+      - local-only
+
+  mermaid:
+    image: ${KROKI_MERMAID_IMAGE:-yuzutech/kroki-mermaid:0.32.1}
+    restart: unless-stopped
+    expose:
+      - "8002"
+    networks:
+      - local-only
+
+volumes:
+  sites:
+  exports:
+  templates:
+
+networks:
+  local-only:
+    internal: true

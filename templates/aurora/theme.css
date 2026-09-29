@@ -1,0 +1,12 @@
+:root {
+  --md-primary-fg-color: #0f766e;
+  --md-accent-fg-color: #06b6d4;
+  --md-default-bg-color: #f0fdfa;
+  --md-default-fg-color: #12302c;
+  --lucidoc-accent: #0f766e;
+}
+.md-header, .md-tabs { background: #115e59; }
+.md-main { background: linear-gradient(145deg, #f0fdfa, #ecfeff); }
+.md-typeset a, .reveal a { color: var(--lucidoc-accent); }
+.reveal h1, .reveal h2, .reveal h3 { color: #99f6e4; }
+.reveal .slides section { text-shadow: 0 1px 18px rgb(0 0 0 / 24%); }

@@ -1,0 +1,18 @@
+= Contribuer au guide
+
+Les pages AsciiDoc sont converties avec Asciidoctor puis intégrées dans le site MkDocs.
+
+== Écrire une page
+
+Placez vos fichiers `.md` ou `.adoc` dans ce dossier. Les liens vers les pages Markdown suivent les URL HTML du site.
+
+== Ajouter un diagramme Kroki
+
+[mermaid]
+----
+flowchart TD
+  Auteur --> Commit
+  Commit --> Build
+----
+
+Le bloc est converti en SVG pendant la génération et reste disponible hors ligne.

@@ -1,0 +1,11 @@
+{
+  "name": "lucidoc-aggregator",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "asciidoctor": "3.0.4",
+    "express": "4.21.2",
+    "reveal.js": "5.2.1"
+  }
+}

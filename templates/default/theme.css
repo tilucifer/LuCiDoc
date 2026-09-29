@@ -1,0 +1,10 @@
+:root {
+  --md-primary-fg-color: #4f46e5;
+  --md-accent-fg-color: #7c3aed;
+  --md-default-bg-color: #ffffff;
+  --md-default-fg-color: #182230;
+  --lucidoc-accent: #4f46e5;
+}
+.md-header, .md-tabs { background: #312e81; }
+.md-typeset a, .reveal a { color: var(--lucidoc-accent); }
+.reveal h1, .reveal h2, .reveal h3 { color: #312e81; }

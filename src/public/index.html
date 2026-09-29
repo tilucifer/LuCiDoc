@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="color-scheme" content="light">
+  <title>LuCiDoc — Présentations & documentation</title>
+  <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+  <header class="topbar">
+    <a class="brand" href="/" aria-label="LuCiDoc, accueil">
+      <span class="brand-mark" aria-hidden="true">L</span>
+      <span><strong>LuCiDoc</strong><small>Présentations & documentation</small></span>
+    </a>
+    <div class="top-actions">
+      <span class="offline-pill"><span></span> Hors ligne</span>
+      <button id="build-all" class="button button-primary" type="button"><span aria-hidden="true">↻</span> Tout générer</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <aside class="sidebar" aria-label="Bibliothèque">
+      <div class="sidebar-heading">
+        <div><p class="eyebrow">Bibliothèque</p><h1>Mes contenus</h1></div>
+        <span id="item-count" class="count-badge">0</span>
+      </div>
+      <label class="search-box"><span aria-hidden="true">⌕</span><input id="filter" type="search" placeholder="Filtrer les contenus…" autocomplete="off"></label>
+      <div id="tree" class="content-tree" aria-live="polite"><div class="loading-row"><span class="spinner small"></span> Lecture du dossier…</div></div>
+      <div id="warnings" class="warnings" hidden></div>
+      <footer class="sidebar-foot"><span class="source-dot"></span> Sources locales en lecture seule</footer>
+    </aside>
+
+    <section class="workspace" aria-label="Lecteur">
+      <section id="welcome" class="welcome-panel">
+        <div class="welcome-art" aria-hidden="true"><div class="art-card art-back"></div><div class="art-card art-front"><span>文</span><i></i><i></i><i></i></div><div class="art-orbit orbit-one"></div><div class="art-orbit orbit-two"></div></div>
+        <p class="eyebrow">Un seul espace de lecture</p>
+        <h2>Présentations et documentation,<br><span>réunies au même endroit.</span></h2>
+        <p class="welcome-copy">Choisissez un contenu dans la bibliothèque pour le lire, le présenter ou l’exporter en PDF.</p>
+        <button id="welcome-build" class="button button-primary" type="button">Générer les contenus <span aria-hidden="true">→</span></button>
+      </section>
+
+      <section id="reader" class="reader" hidden>
+        <div class="reader-heading">
+          <div class="breadcrumb"><span id="reader-kind">Documentation</span><span aria-hidden="true">/</span><strong id="reader-title">Titre</strong></div>
+          <div id="build-state" class="build-state"><span class="state-dot"></span><span>Prêt</span></div>
+        </div>
+        <div class="reader-toolbar">
+          <div class="toolbar-left">
+            <label class="theme-select"><span aria-hidden="true">◐</span><span class="sr-only">Thème</span><select id="template-select" aria-label="Choisir un thème"></select></label>
+            <button id="build-current" class="button button-light" type="button"><span aria-hidden="true">↻</span> Régénérer</button>
+          </div>
+          <div class="toolbar-right">
+            <button id="export-pdf" class="button button-light" type="button"><span aria-hidden="true">↓</span> Exporter PDF</button>
+            <button id="fullscreen" class="button button-light" type="button" aria-label="Passer en plein écran"><span aria-hidden="true">⛶</span> Plein écran</button>
+          </div>
+        </div>
+        <div id="progress-panel" class="progress-panel" hidden>
+          <div class="progress-copy"><span class="spinner"></span><span id="progress-message">Préparation du rendu…</span><strong id="progress-percent">0%</strong></div>
+          <div class="progress-track"><span id="progress-bar"></span></div>
+        </div>
+        <div class="viewer-frame"><iframe id="viewer" title="Aperçu du contenu" src="about:blank"></iframe></div>
+        <div id="empty-reader" class="empty-reader" hidden><div class="empty-icon">▧</div><h3>Ce contenu n’a pas encore été généré</h3><p>Lancez la génération pour ouvrir le lecteur.</p><button id="empty-build" class="button button-primary" type="button">Générer ce contenu</button></div>
+      </section>
+      <div class="workspace-foot"><span>Markdown · AsciiDoc</span><span>Reveal.js · MkDocs · Kroki</span></div>
+    </section>
+  </main>
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+  <script type="module" src="/app.js"></script>
+</body>
+</html>
