@@ -24,8 +24,7 @@ services:
       - sites:/data
       - templates:/templates
     ports:
-      - "8080:8080"
-      # - "${WEB_BIND:-127.0.0.1}:${WEB_PORT:-8080}:8080"
+      - "127.0.0.1:${WEB_PORT:-8080}:8080"
     depends_on:
       pdf:
         condition: service_healthy
@@ -35,6 +34,7 @@ services:
         condition: service_started
     networks:
       - local-only
+      - host-access
 
   pdf:
     build:
@@ -89,3 +89,11 @@ volumes:
 networks:
   local-only:
     internal: true
+  # Docker does not publish ports for a container attached only to an
+  # internal bridge. This second bridge lets the host reach the UI while
+  # disabling the bridge's usual outbound masquerading.
+  host-access:
+    driver: bridge
+    driver_opts:
+      com.docker.network.bridge.enable_ip_masquerade: "false"
+      com.docker.network.bridge.host_binding_ipv4: "127.0.0.1"

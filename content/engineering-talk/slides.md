@@ -19,8 +19,8 @@ Un seul lecteur pour les supports de l’équipe
 
 ```mermaid
 flowchart LR
-  A[Markdown] --> B[Build]
-  B --> C[Reveal.js]
+  A[Markdown] --> B["Build "]
+  B --> C["Reveal.js  "]
   B --> D[MkDocs]
   B --> E[Kroki SVG]
 ```

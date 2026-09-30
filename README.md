@@ -18,7 +18,7 @@ Par défaut, le port web est lié à `127.0.0.1`. Pour accéder au lecteur depui
 
 ## Hors ligne et réseau
 
-Après la construction et le chargement de toutes les images, l’interface, MkDocs, Reveal.js, les styles, Chromium/Puppeteer et Kroki s’exécutent sur des ressources locales. Le réseau Compose est déclaré `internal`, seul le port web est publié sur l’hôte, et aucun CDN n’est appelé par le lecteur. Les diagrammes Markdown/AsciiDoc sont rendus par l’instance Kroki locale pendant le build puis inclus comme SVG dans le site.
+Après la construction et le chargement de toutes les images, l’interface, MkDocs, Reveal.js, les styles, Chromium/Puppeteer et Kroki s’exécutent sur des ressources locales, sans CDN. Les services restent sur le réseau Compose `local-only`; seul l’agrégateur rejoint aussi `host-access` pour publier l’interface sur `127.0.0.1:8080`. Le NAT sortant de ce second réseau est désactivé. Les diagrammes Markdown/AsciiDoc sont rendus par l’instance Kroki locale pendant le build puis inclus comme SVG dans le site.
 
 La première construction doit récupérer les images Docker et les dépendances npm/Python ainsi que les paquets Debian de Chromium. Pour une machine isolée, construisez les images sur une machine connectée, transférez les images obtenues puis chargez-les dans Docker (`docker save` / `docker load`). Le registre peut être remplacé via `KROKI_IMAGE` et `KROKI_MERMAID_IMAGE`; en entreprise, figer les images autorisées par tag immuable ou digest puis les précharger dans le cache Docker.
 

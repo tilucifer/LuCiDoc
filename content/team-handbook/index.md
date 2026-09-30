@@ -16,4 +16,4 @@ LuCiDoc --> Data : HTML + SVG
 @enduml
 ```
 
-Consultez aussi [le guide de contribution](contributing.html).
+Consultez aussi [le guide de contribution](contributing.adoc).
