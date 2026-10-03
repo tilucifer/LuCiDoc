@@ -3,3 +3,6 @@ node_modules/
 __pycache__/
 *.pyc
 exports/
+!content/engineering-talk
+!content/team-handbook
+content/
