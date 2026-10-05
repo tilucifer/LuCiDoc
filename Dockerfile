@@ -1,6 +1,7 @@
 FROM node:22-bookworm-slim
 
 ENV NODE_ENV=production \
+    NODE_USE_ENV_PROXY=1 \
     PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1
 

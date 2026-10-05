@@ -1,13 +1,39 @@
 name: lucidoc
 
+x-proxy-build-args: &proxy-build-args
+  HTTP_PROXY: "${HTTP_PROXY:-${http_proxy:-}}"
+  http_proxy: "${http_proxy:-${HTTP_PROXY:-}}"
+  HTTPS_PROXY: "${HTTPS_PROXY:-${https_proxy:-}}"
+  https_proxy: "${https_proxy:-${HTTPS_PROXY:-}}"
+  FTP_PROXY: "${FTP_PROXY:-${ftp_proxy:-}}"
+  ftp_proxy: "${ftp_proxy:-${FTP_PROXY:-}}"
+  ALL_PROXY: "${ALL_PROXY:-${all_proxy:-}}"
+  all_proxy: "${all_proxy:-${ALL_PROXY:-}}"
+  NO_PROXY: "${NO_PROXY:-${no_proxy:-localhost,127.0.0.1,::1,aggregator,pdf,kroki,mermaid}}"
+  no_proxy: "${no_proxy:-${NO_PROXY:-localhost,127.0.0.1,::1,aggregator,pdf,kroki,mermaid}}"
+
+x-proxy-environment: &proxy-environment
+  HTTP_PROXY: "${HTTP_PROXY:-${http_proxy:-}}"
+  http_proxy: "${http_proxy:-${HTTP_PROXY:-}}"
+  HTTPS_PROXY: "${HTTPS_PROXY:-${https_proxy:-}}"
+  https_proxy: "${https_proxy:-${HTTPS_PROXY:-}}"
+  FTP_PROXY: "${FTP_PROXY:-${ftp_proxy:-}}"
+  ftp_proxy: "${ftp_proxy:-${FTP_PROXY:-}}"
+  ALL_PROXY: "${ALL_PROXY:-${all_proxy:-}}"
+  all_proxy: "${all_proxy:-${ALL_PROXY:-}}"
+  NO_PROXY: "${NO_PROXY:-${no_proxy:-localhost,127.0.0.1,::1,aggregator,pdf,kroki,mermaid}}"
+  no_proxy: "${no_proxy:-${NO_PROXY:-localhost,127.0.0.1,::1,aggregator,pdf,kroki,mermaid}}"
+
 services:
   aggregator:
     build:
       context: .
       dockerfile: Dockerfile
+      args: *proxy-build-args
     restart: unless-stopped
     init: true
     environment:
+      <<: *proxy-environment
       PORT: "8080"
       CONTENT_ROOT: /content
       DATA_ROOT: /data
@@ -40,9 +66,11 @@ services:
     build:
       context: ./pdf
       dockerfile: Dockerfile
+      args: *proxy-build-args
     restart: unless-stopped
     init: true
     environment:
+      <<: *proxy-environment
       PORT: "3000"
       APP_URL: http://aggregator:8080
       EXPORT_ROOT: /exports

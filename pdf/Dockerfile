@@ -1,6 +1,7 @@
 FROM node:22-bookworm-slim
 
 ENV NODE_ENV=production \
+    NODE_USE_ENV_PROXY=1 \
     PUPPETEER_SKIP_DOWNLOAD=true \
     CHROMIUM_EXECUTABLE_PATH=/usr/bin/chromium
 
