@@ -7,3 +7,17 @@
 .reader:fullscreen{width:100vw;height:100vh;max-width:none;margin:0;padding:18px;background:#f5f7fb}
 .reader:fullscreen .viewer-frame{flex:1;min-height:0}
 .reader:fullscreen .viewer-frame iframe{height:100%;min-height:0}
+.reader:fullscreen{padding:clamp(3px,3vw,3px);gap:8px;background:#e9ecf3}
+.reader:fullscreen .reader-heading{display:none}
+.reader:fullscreen .reader-toolbar{width:min(100%,1200px);margin:0 auto 8px;flex:0 0 auto}
+.reader:fullscreen .viewer-frame{width:min(100%,1200px);max-height:calc(100vh - 50x);align-self:center;margin:auto;border-radius:10px}
+.reader:fullscreen .viewer-frame iframe{height:100%;min-height:0}
+.reader:fullscreen .reader-toolbar .button{min-height:34px;padding:0 10px;font-size:11px}
+.reader:fullscreen{padding:5px;gap:0}
+.reader:fullscreen .reader-toolbar{width:100%;gap:4px;margin:0 auto 4px;padding:0;min-height:30px}
+.reader:fullscreen .toolbar-left,.reader:fullscreen .toolbar-right{gap:4px}
+.reader:fullscreen .reader-toolbar .button{min-height:26px;padding:0 5px;font-size:10px}
+.reader:fullscreen .theme-select{min-height:26px;padding:0 5px;gap:4px}
+.reader:fullscreen .theme-select select{font-size:10px}
+.reader:fullscreen .progress-panel{display:none}
+.reader:fullscreen .viewer-frame{max-height:calc(100vh - 50px)}
