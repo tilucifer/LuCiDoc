@@ -145,6 +145,17 @@ app.get('/api/templates/:id/theme.css', async (request, response) => {
   response.type('text/css').set('cache-control', 'no-store');
   response.send(await fs.readFile(path.join(template.directory, 'theme.css')));
 });
+app.get('/api/templates/:id/logo.png', async (request, response, next) => {
+  const template = await readTemplate(request.params.id);
+  if (!template) return response.status(404).type('text').send('Template inconnu');
+  try {
+    response.type('png').set('cache-control', 'no-store');
+    response.send(await fs.readFile(path.join(template.directory, 'logo.png')));
+  } catch (error) {
+    if (error.code === 'ENOENT') return response.status(404).type('text').send('Logo de template introuvable');
+    next(error);
+  }
+});
 
 app.post('/api/build', async (_request, response) => {
   const job = await startBuild();

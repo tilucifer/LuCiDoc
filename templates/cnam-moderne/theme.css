@@ -1,0 +1,145 @@
+/* Palette and typography taken from CNAM_template.pptx. */
+:root {
+  --cnam-blue: #0c419a;
+  --cnam-cyan: #007fad;
+  --cnam-teal: #298478;
+  --cnam-red: #c74e5a;
+  --cnam-purple: #a05eb5;
+  --cnam-slate: #545859;
+  --cnam-orange: #f26b43;
+  --cnam-yellow: #fbae40;
+  --cnam-pale: #f2f6fb;
+  --md-primary-fg-color: var(--cnam-blue);
+  --md-primary-fg-color--dark: #093579;
+  --md-primary-fg-color--light: #2860b5;
+  --md-accent-fg-color: var(--cnam-cyan);
+  --md-default-bg-color: #fff;
+  --md-default-fg-color: #273449;
+  --md-default-fg-color--light: #65758a;
+  --md-code-bg-color: #f0f4fa;
+  --lucidoc-accent: var(--cnam-blue);
+}
+
+/* MkDocs Material documentation */
+.md-header, .md-tabs { background: var(--cnam-blue); }
+.md-header { box-shadow: 0 3px 12px rgb(12 65 154 / 18%); }
+.md-main { background: linear-gradient(180deg, #f4f7fc 0, #fff 310px); }
+.md-content { color: #273449; }
+.md-typeset { font-family: Arial, "Liberation Sans", sans-serif; line-height: 1.72; }
+.md-typeset h1, .md-typeset h2, .md-typeset h3, .md-typeset h4 {
+  font-family: Arial, "Liberation Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: -.025em;
+}
+.md-typeset h1 { color: var(--cnam-blue); }
+.md-typeset h2 {
+  margin-top: 1.8em;
+  padding: .18em 0 .18em .55em;
+  border-left: 4px solid var(--cnam-cyan);
+  color: var(--cnam-blue);
+}
+.md-typeset h3 { color: var(--cnam-teal); }
+.md-typeset h4 { color: var(--cnam-purple); }
+.md-typeset a { color: var(--cnam-blue); font-weight: 600; }
+.md-typeset a:hover { color: var(--cnam-cyan); }
+.md-typeset hr { border-bottom: 2px solid #dce6f3; }
+.md-typeset blockquote {
+  border-left-color: var(--cnam-teal);
+  border-left-width: 4px;
+  color: #43546b;
+}
+.md-typeset table:not([class]) { border: 1px solid #dce5f1; border-radius: 8px; overflow: hidden; }
+.md-typeset table:not([class]) th { background: var(--cnam-blue); color: white; }
+.md-typeset table:not([class]) tr:nth-child(even) { background: #f2f6fb; }
+.md-typeset .admonition, .md-typeset details {
+  border-color: var(--cnam-cyan);
+  border-radius: 8px;
+  box-shadow: 0 5px 18px rgb(12 65 154 / 7%);
+}
+.md-typeset .admonition-title, .md-typeset summary { background: #eaf3fa; }
+.md-typeset .admonition.note, .md-typeset .admonition.info { border-color: var(--cnam-cyan); }
+.md-typeset .admonition.tip, .md-typeset .admonition.success { border-color: var(--cnam-teal); }
+.md-typeset .admonition.warning { border-color: var(--cnam-orange); }
+.md-typeset .admonition.danger, .md-typeset .admonition.failure { border-color: var(--cnam-red); }
+.md-typeset code { color: #174c91; }
+.md-typeset pre > code { color: #e8f1ff; }
+.md-footer { background: #083579; }
+
+/* Reveal.js presentations */
+.reveal {
+  color: var(--cnam-slate);
+  font-family: Arial, "Liberation Sans", sans-serif;
+  font-size: 34px;
+  font-weight: 400;
+}
+.reveal .slides section {
+  padding: .45em 1.15em 1.25em;
+  color: var(--cnam-slate);
+  text-align: left;
+}
+.reveal h1, .reveal h2, .reveal h3, .reveal h4 {
+  color: var(--cnam-blue);
+  font-family: Arial, "Liberation Sans", sans-serif;
+  font-weight: 700;
+  letter-spacing: -.035em;
+  text-transform: none;
+  text-shadow: none;
+}
+.reveal h1 { font-size: 1.55em; }
+.reveal h2 { font-size: 1.22em; color: var(--cnam-cyan); }
+.reveal h3 { font-size: 1em; color: var(--cnam-teal); }
+.reveal h4 { color: var(--cnam-purple); }
+.reveal p, .reveal li, .reveal blockquote { line-height: 1.45; }
+.reveal strong { color: var(--cnam-blue); }
+.reveal a { color: var(--cnam-cyan); }
+.reveal a:hover { color: var(--cnam-teal); }
+.reveal blockquote {
+  width: 88%;
+  padding: .45em .8em;
+  border-left: 5px solid var(--cnam-teal);
+  background: #eff7f6;
+  box-shadow: none;
+  font-style: normal;
+}
+.reveal ul, .reveal ol { display: block; }
+.reveal li::marker { color: var(--cnam-cyan); }
+.reveal table th { background: var(--cnam-blue); color: #fff; }
+.reveal table td { border-color: #cbd8e8; }
+.reveal table tr:nth-child(even) { background: #f2f6fb; }
+.reveal pre {
+  width: 100%;
+  padding: .55em;
+  border-top: 4px solid var(--cnam-cyan);
+  border-radius: 8px;
+  background: #102b52;
+  box-shadow: 0 8px 24px rgb(12 65 154 / 14%);
+}
+.reveal code { font-family: "Liberation Mono", Consolas, monospace; }
+.reveal .slides > section:not(:first-child) { border-top: 5px solid var(--cnam-blue); }
+.reveal .slides > section:first-child {
+  border-top: 12px solid var(--cnam-blue);
+  background: linear-gradient(135deg, #fff 0 72%, var(--cnam-pale) 72% 100%);
+}
+.reveal .slides > section:first-child h1 {
+  color: var(--cnam-blue);
+  font-size: 1.8em;
+}
+.reveal .slides section::after {
+  content: "";
+  position: absolute;
+  right: 1.2em;
+  bottom: .35em;
+  width: 4.2em;
+  height: 1.15em;
+  background: url("/api/templates/cnam-presentation/logo.png") center / contain no-repeat;
+  opacity: .94;
+}
+.reveal .progress { color: var(--cnam-cyan); height: 4px; }
+.reveal .controls { color: var(--cnam-blue); }
+.reveal .slide-number { color: var(--cnam-blue); background: transparent; }
+.lucidoc-diagram { border: 1px solid #dce5f1; box-shadow: 0 5px 18px rgb(12 65 154 / 8%); }
+
+@media (max-width: 700px) {
+  .reveal .slides section { padding: .25em .55em 1.5em; }
+  .reveal .slides section::after { right: .3em; bottom: .15em; width: 3.2em; }
+}

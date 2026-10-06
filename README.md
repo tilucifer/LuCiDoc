@@ -59,7 +59,8 @@ Le sélecteur charge les dossiers présents dans le volume nommé `lucidoc_templ
 ```text
 mon-theme/
 ├── template.json
-└── theme.css
+├── theme.css
+└── logo.png (facultatif)
 ```
 
 Exemple de `template.json` :
@@ -72,7 +73,7 @@ Exemple de `template.json` :
 }
 ```
 
-`id` doit correspondre au nom du dossier. `presentationTheme` est un thème Reveal intégré (`black`, `white`, `moon`, `night`, etc.). `theme.css` contient les règles personnalisées communes; il peut cibler les classes Material (`.md-*`) ou Reveal (`.reveal`). Le template doit fournir les deux fichiers et son identifiant doit être unique.
+`id` doit correspondre au nom du dossier. `presentationTheme` est un thème Reveal intégré (`black`, `white`, `moon`, `night`, etc.). `theme.css` contient les règles personnalisées communes; il peut cibler les classes Material (`.md-*`) ou Reveal (`.reveal`). `logo.png` est facultatif et accessible dans le CSS sous `/api/templates/<id>/logo.png`. Le template doit fournir `template.json` et `theme.css`, et son identifiant doit être unique.
 
 Copiez un dossier local de template dans le volume persistant sans reconstruire les images :
 
