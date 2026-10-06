@@ -131,7 +131,7 @@
   bottom: .35em;
   width: 4.2em;
   height: 1.15em;
-  background: url("/api/templates/cnam-presentation/logo.png") center / contain no-repeat;
+  background: url("/api/templates/cnam-moderne/logo.png") center / contain no-repeat;
   opacity: .94;
 }
 .reveal .progress { color: var(--cnam-cyan); height: 4px; }
